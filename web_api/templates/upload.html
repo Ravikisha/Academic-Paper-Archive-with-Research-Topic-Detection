@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload Research Paper</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-10">
+  <div class="max-w-2xl mx-auto bg-white p-8 rounded shadow">
+    <h1 class="text-2xl font-bold mb-4">Upload Research Paper (PDF)</h1>
+
+    {% if message %}
+      <div class="bg-green-100 text-green-800 px-4 py-2 rounded mb-4">
+        {{ message }}
+      </div>
+    {% endif %}
+    
+    {% if error %}
+      <div class="bg-red-100 text-red-800 px-4 py-2 rounded mb-4">
+        {{ error }}
+      </div>
+    {% endif %}
+
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="file" accept="application/pdf" class="mb-4">
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Upload</button>
+    </form>
+
+    <a href="/" class="block mt-4 text-blue-600 hover:underline">🔍 Search Papers</a>
+  </div>
+</body>
+</html>

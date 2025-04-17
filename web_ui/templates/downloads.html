@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Downloads</title>
+</head>
+<body>
+    <h1>📁 Uploaded Files</h1>
+    <ul>
+        {% for name, fid in files.items() %}
+            <li>
+                {{ name }} — File ID: <code>{{ fid }}</code>
+                [<a href="/download/{{ fid }}">Download</a>]
+            </li>
+        {% endfor %}
+    </ul>
+    <br />
+    <a href="/">⬅️ Upload More</a>
+</body>
+</html>

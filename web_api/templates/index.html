@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Research Papers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="bg-gray-100 p-10">
+  <div class="max-w-2xl mx-auto bg-white p-8 rounded shadow">
+    <h1 class="text-2xl font-bold mb-4">Semantic Search</h1>
+
+    <form action="/" method="post">
+      <input type="text" name="query" placeholder="Search by topic..." value="{{ query or '' }}"
+             class="w-full p-2 border rounded mb-4">
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Search</button>
+    </form>
+
+    {% if error %}
+      <div class="bg-red-100 text-red-800 px-4 py-2 rounded mb-4">
+        {{ error }}
+      </div>
+    {% endif %}
+
+    {% if results %}
+      <h2 class="text-lg font-semibold mt-6 mb-2">Results:</h2>
+      <ul class="space-y-3">
+        {% for paper in results %}
+          <li class="border p-3 rounded shadow-sm">
+            <a href="/download/{{ paper.id }}" class="text-blue-600 hover:underline">
+              <i class="fas fa-file-alt"></i> {{ paper.title }}
+            </a><br>
+            <strong>{{ paper.title }}</strong><br>
+            <small><em>{{ paper.filename }}</em></small><br>
+            <p class="text-gray-700 mt-1">{{ paper.summary }}</p>
+            <p class="text-sm text-gray-600 mt-1">Keywords: {{ paper.keywords }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    <a href="/upload" class="block mt-6 text-blue-600 hover:underline">⬅ Upload another paper</a>
+  </div>
+</body>
+</html>
