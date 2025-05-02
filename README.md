@@ -1,3 +1,5 @@
+![Poster](./docs/poster.png)
+
 # 📚 Academic Paper Archive with Research Topic Detection
 
 A research-centric web application that allows users to upload academic papers (PDFs), automatically extract summaries and topics using Machine Learning, and store them in a custom-built distributed file storage system. Semantic search is enabled using Sentence Transformers and FAISS for lightning-fast and accurate retrieval of related papers.
